@@ -14,7 +14,7 @@ class MainViewModel : ViewModel() {
 //        return ApplicationApi().getCategories()
 //    }
 
-    suspend fun getMovies(): MutableLiveData<MoviesResponse> {
+    suspend fun getMovies(): LiveData<MoviesResponse> {
         return ApplicationApi().getMovies()
     }
 }

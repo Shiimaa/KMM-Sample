@@ -20,7 +20,6 @@ class ApplicationApi {
         install(JsonFeature)
     }
 
-
     private val address = Url("https://cors-test.appspot.com/test")
 
     private val popularMovies =
