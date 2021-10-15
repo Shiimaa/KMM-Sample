@@ -66,4 +66,6 @@ dependencies {
     //spd - ssp
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    compileOnly("io.realm.kotlin:library-base:0.6.0-SNAPSHOT")
 }
