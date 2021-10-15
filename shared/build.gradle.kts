@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-//    id("com.squareup.sqldelight")
+    id("com.squareup.sqldelight")
     id("kotlinx-serialization")
 }
 
@@ -44,14 +44,18 @@ kotlin {
                 implementation("io.ktor:ktor-client-serialization:1.6.4")
 
                 // SQL Delight
-//                implementation("com.squareup.sqldelight:runtime:1.5.1")
+                implementation("com.squareup.sqldelight:runtime:1.5.1")
+
+                //logger
+                implementation("io.github.aakira:napier:2.1.0")
+
             }
         }
 
         val androidMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.30")
-                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.5.30")
+                implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.5.31")
 
                 // MOKO - MVVM
                 implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
@@ -60,19 +64,19 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:1.6.4")
 
                 // SQL Delight
-//                implementation("com.squareup.sqldelight:android-driver:1.5.1")
+                implementation("com.squareup.sqldelight:android-driver:1.5.1")
             }
         }
 
         val iosMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.5.30")
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.5.31")
 
                 // KTOR
                 implementation("io.ktor:ktor-client-ios:1.6.4")
 
                 // SQL Delight
-//                implementation("com.squareup.sqldelight:native-driver:1.5.1")
+                implementation("com.squareup.sqldelight:native-driver:1.5.1")
             }
         }
 
@@ -92,6 +96,7 @@ kotlin {
 
         val iosTest by getting
     }
+
 }
 
 android {
@@ -117,3 +122,11 @@ val packForXcode by tasks.creating(Sync::class) {
 }
 
 tasks.getByName("build").dependsOn(packForXcode)
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.kmmsampleapp.shared.db"
+    }
+
+    linkSqlite = true
+}

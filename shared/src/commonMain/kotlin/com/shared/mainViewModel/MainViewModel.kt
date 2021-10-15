@@ -10,9 +10,6 @@ class MainViewModel : ViewModel() {
     suspend fun about(): LiveData<String> {
         return ApplicationApi().about()
     }
-//    suspend fun getCategories(): LiveData<List<CategoryItem>> {
-//        return ApplicationApi().getCategories()
-//    }
 
     suspend fun getMovies(): LiveData<MoviesResponse> {
         return ApplicationApi().getMovies()

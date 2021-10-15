@@ -1,0 +1,15 @@
+
+CREATE TABLE Test (
+    name TEXT NOT NULL
+    );
+
+insertUser:
+INSERT OR FAIL INTO Test(name)
+VALUES(?);
+
+removeAllUser:
+DELETE FROM Test;
+
+selectAllUser:
+SELECT *
+FROM Test;
